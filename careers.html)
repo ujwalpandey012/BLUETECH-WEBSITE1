@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Blue Tech IT Solution</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/img/logo.jpeg" class="nav-logo" alt="Blue Tech Logo">
+            <span class="logo-text">BLUE TECH</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a class="active" href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1 class="glow-title">Join Our Team</h1>
+    <p class="header-subtext">
+        Blue Tech IT Solution is growing — and we are looking for talented individuals.
+    </p>
+</section>
+
+<!-- JOB LISTINGS -->
+<section class="section">
+    <h2 class="section-title">Open Positions</h2>
+
+    <div class="job-list">
+
+        <div class="job-card">
+            <h3>Web Developer (Front-End)</h3>
+            <p>Build responsive websites, optimize UI/UX, and collaborate with our design team.</p>
+            <a href="apply.html?job=Web Developer (Front-End)" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Back-End Developer</h3>
+            <p>Manage server-side logic, APIs, database systems, and security operations.</p>
+            <a href="apply.html?job=Back-End Developer" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>IT Support Technician</h3>
+            <p>Assist clients with troubleshooting, system setup, and technical support.</p>
+            <a href="apply.html?job=IT Support Technician" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Graphics Designer</h3>
+            <p>Design business cards, posters, social media templates & branding packs.</p>
+            <a href="apply.html?job=Graphics Designer" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Digital Marketer</h3>
+            <p>Create digital ads, social media content & targeted marketing strategies.</p>
+            <a href="apply.html?job=Digital Marketer" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Content Writer</h3>
+            <p>Write engaging website content, blogs, ad copies & product descriptions.</p>
+            <a href="apply.html?job=Content Writer" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="job-card">
+            <h3>Project Manager</h3>
+            <p>Manage project timelines, client communication and team coordination.</p>
+            <a href="apply.html?job=Project Manager" class="btn-primary">Apply Now</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+    <h2>Don't See Your Job?</h2>
+    <p>You can still send us your CV for future opportunities.</p>
+    <a href="apply.html?job=General Application" class="btn-secondary">Send CV</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Blue Tech IT Solution  
+       | ABN: 9806970424  
+       | Phone: 0499 132 65  
+       | Clayton, VIC 3168  
+       | Email: ujwalpandey012@gmail.com
+    </p>
+</footer>
+
+</body>
+</html>
