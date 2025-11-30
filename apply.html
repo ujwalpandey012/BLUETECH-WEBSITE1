@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now | Blue Tech IT Solution</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/img/logo.jpeg" class="nav-logo" alt="BlueTech Logo">
+            <span class="logo-text">BLUE TECH</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a class="active" href="careers.html">Careers</a></li>
+            <li><a href="apply.html" class="active">Apply</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1 class="glow-title">Apply for a Job</h1>
+    <p class="header-subtext">Submit your details & upload all your documents. We will contact you shortly.</p>
+</section>
+
+<!-- APPLY FORM -->
+<section class="section">
+
+    <form id="applyForm" class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="17d82b68-78b3-409f-b416-815c64a36941">
+
+        <!-- Auto Job Field -->
+        <label>Position Applied For</label>
+        <input type="text" id="jobField" name="job_position" readonly required>
+
+        <label>Your Full Name</label>
+        <input type="text" name="fullname" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required>
+
+        <label>Upload Your CV (PDF/DOCX)</label>
+        <input type="file" name="files[]" accept=".pdf,.doc,.docx" required>
+
+        <label>Upload Additional Documents (Multiple Allowed)</label>
+        <input type="file" name="files[]" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" multiple>
+
+        <label>Cover Letter</label>
+        <textarea name="coverletter" placeholder="Write a short cover letter..." required></textarea>
+
+        <button type="submit">Submit Application</button>
+
+        <p id="result"></p>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Blue Tech IT Solution  
+       | ABN: 9806970424  
+       | Phone: 0499 132 65  
+       | Clayton, VIC 3168  
+       | Email: ujwalpandey012@gmail.com
+    </p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+
+<script>
+    // Auto-fill job from careers page
+    const params = new URLSearchParams(window.location.search);
+    const job = params.get("job");
+    document.getElementById("jobField").value = job ? job : "General Application";
+</script>
+
+</body>
+</html>
