@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Blue Tech IT Solution</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="assets/img/logo.jpeg" class="nav-logo" alt="Blue Tech Logo">
+            <span class="logo-text">BLUE TECH</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <h1 class="glow-title">Contact Us</h1>
+    <p class="header-subtext">
+        Have questions or want to start a project?  
+        Fill the form below — we reply within 24 hours.
+    </p>
+</section>
+
+<!-- CONTACT FORM SECTION -->
+<section class="section">
+
+    <form id="contactForm" class="contact-form" 
+          action="https://api.web3forms.com/submit" 
+          method="POST">
+
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="17d82b68-78b3-409f-b416-815c64a36941">
+
+        <label>Your Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required>
+
+        <label>Your Message</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+        <p id="result"></p>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 Blue Tech IT Solution  
+       | ABN: 9806970424  
+       | Phone: 0499 132 65  
+       | Clayton, VIC 3168  
+       | Email: ujwalpandey012@gmail.com
+    </p>
+</footer>
+
+<script>
+// CONTACT FORM LOGIC
+const form = document.getElementById("contactForm");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    result.innerHTML = "Sending...";
+
+    const formData = new FormData(form);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+        result.style.color = "#00ffcc";
+        result.innerHTML = "Message sent successfully!";
+        form.reset();
+    } else {
+        result.style.color = "red";
+        result.innerHTML = "Something went wrong. Please try again.";
+    }
+});
+</script>
+
+</body>
+</html>
