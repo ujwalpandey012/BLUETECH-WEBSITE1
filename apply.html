@@ -32,21 +32,28 @@
 <!-- PAGE HEADER -->
 <section class="page-header">
     <h1 class="glow-title">Apply for a Job</h1>
-    <p class="header-subtext">Submit your details & upload all your documents. We will contact you shortly.</p>
+    <p class="header-subtext">Submit your details & upload your CV. We will contact you soon.</p>
+
+    <!-- WAVE -->
+    <div class="wave-container">
+        <svg class="wave" viewBox="0 0 1440 320">
+            <path fill="#0ab6ff50"
+                d="M0,224L80,213.3C160,203,320,181,480,197.3C640,213,800,267,960,272C1120,277,1280,245,1360,224L1440,203L1440,0L1360,0C1280,
+0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+            </path>
+        </svg>
+    </div>
 </section>
 
 <!-- APPLY FORM -->
 <section class="section">
 
     <form id="applyForm" class="contact-form"
-          action="https://api.web3forms.com/submit"
+          action="YOUR_FORMSPREE_LINK_HERE"
           method="POST"
           enctype="multipart/form-data">
 
-        <!-- Web3Forms Access Key -->
-        <input type="hidden" name="access_key" value="17d82b68-78b3-409f-b416-815c64a36941">
-
-        <!-- Auto Job Field -->
+        <!-- AUTO JOB FIELD -->
         <label>Position Applied For</label>
         <input type="text" id="jobField" name="job_position" readonly required>
 
@@ -60,17 +67,17 @@
         <input type="tel" name="phone" required>
 
         <label>Upload Your CV (PDF/DOCX)</label>
-        <input type="file" name="files[]" accept=".pdf,.doc,.docx" required>
+        <input type="file" name="cv_file" accept=".pdf,.doc,.docx" required>
 
-        <label>Upload Additional Documents (Multiple Allowed)</label>
-        <input type="file" name="files[]" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" multiple>
+        <label>Upload Additional Documents (Optional)</label>
+        <input type="file" name="additional_files" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip" multiple>
 
         <label>Cover Letter</label>
-        <textarea name="coverletter" placeholder="Write a short cover letter..." required></textarea>
+        <textarea name="coverletter" placeholder="Write your cover letter..." required></textarea>
 
-        <button type="submit">Submit Application</button>
+        <button type="submit" class="btn-primary">Submit Application</button>
 
-        <p id="result"></p>
+        <p id="applyStatus"></p>
     </form>
 </section>
 
@@ -84,13 +91,45 @@
     </p>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+// Autofill job name
+const params = new URLSearchParams(window.location.search);
+const job = params.get("job");
+document.getElementById("jobField").value = job ? job : "General Application";
+</script>
 
 <script>
-    // Auto-fill job from careers page
-    const params = new URLSearchParams(window.location.search);
-    const job = params.get("job");
-    document.getElementById("jobField").value = job ? job : "General Application";
+// FORMSPREE AJAX SUBMISSION
+const applyForm = document.getElementById("applyForm");
+const applyStatus = document.getElementById("applyStatus");
+
+applyForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    applyStatus.innerHTML = "Submitting...";
+    applyStatus.style.color = "#00c8ff";
+
+    const formData = new FormData(applyForm);
+
+    fetch(applyForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+    })
+    .then(response => {
+        if (response.ok) {
+            applyStatus.innerHTML = "Application sent successfully!";
+            applyStatus.style.color = "#00ffcc";
+            applyForm.reset();
+        } else {
+            applyStatus.innerHTML = "Error sending application. Try again.";
+            applyStatus.style.color = "red";
+        }
+    })
+    .catch(error => {
+        applyStatus.innerHTML = "Network error. Try again.";
+        applyStatus.style.color = "red";
+    });
+});
 </script>
 
 </body>
