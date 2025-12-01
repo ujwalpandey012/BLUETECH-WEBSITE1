@@ -33,19 +33,23 @@
     <h1 class="glow-title">Contact Us</h1>
     <p class="header-subtext">
         Have questions or want to start a project?  
-        Fill the form below — we reply within 24 hours.
+        We respond within 24 hours.
     </p>
+
+    <!-- WAVE -->
+    <div class="wave-container">
+        <svg class="wave" viewBox="0 0 1440 320">
+            <path fill="#0ab6ff50" 
+            d="M0,224L80,213.3C160,203,320,181,480,197.3C640,213,800,267,960,272C1120,277,1280,245,1360,224L1440,203L1440,0L1360,0C1280,
+0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+        </svg>
+    </div>
 </section>
 
-<!-- CONTACT FORM SECTION -->
+<!-- CONTACT FORM -->
 <section class="section">
 
-    <form id="contactForm" class="contact-form" 
-          action="https://api.web3forms.com/submit" 
-          method="POST">
-
-        <!-- Web3Forms Access Key -->
-        <input type="hidden" name="access_key" value="17d82b68-78b3-409f-b416-815c64a36941">
+    <form id="contactForm" class="contact-form" method="POST" action="YOUR_FORMSPREE_LINK_HERE">
 
         <label>Your Name</label>
         <input type="text" name="name" required>
@@ -59,9 +63,9 @@
         <label>Your Message</label>
         <textarea name="message" required></textarea>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" class="btn-primary">Send Message</button>
 
-        <p id="result"></p>
+        <p id="formStatus"></p>
     </form>
 </section>
 
@@ -76,32 +80,37 @@
 </footer>
 
 <script>
-// CONTACT FORM LOGIC
+// CONTACT FORM AJAX SCRIPT (FORMSPREE)
 const form = document.getElementById("contactForm");
-const result = document.getElementById("result");
+const statusEl = document.getElementById("formStatus");
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", function (e) {
     e.preventDefault();
+    
+    statusEl.innerHTML = "Sending...";
+    statusEl.style.color = "#00c8ff";
 
-    result.innerHTML = "Sending...";
+    const data = new FormData(form);
 
-    const formData = new FormData(form);
-
-    const res = await fetch("https://api.web3forms.com/submit", {
+    fetch(form.action, {
         method: "POST",
-        body: formData
+        body: data,
+        headers: { "Accept": "application/json" }
+    })
+    .then(response => {
+        if (response.ok) {
+            statusEl.innerHTML = "Message sent successfully!";
+            statusEl.style.color = "#00ffcc";
+            form.reset();
+        } else {
+            statusEl.innerHTML = "Something went wrong. Please try again.";
+            statusEl.style.color = "red";
+        }
+    })
+    .catch(error => {
+        statusEl.innerHTML = "Connection error. Try again.";
+        statusEl.style.color = "red";
     });
-
-    const data = await res.json();
-
-    if (data.success) {
-        result.style.color = "#00ffcc";
-        result.innerHTML = "Message sent successfully!";
-        form.reset();
-    } else {
-        result.style.color = "red";
-        result.innerHTML = "Something went wrong. Please try again.";
-    }
 });
 </script>
 
