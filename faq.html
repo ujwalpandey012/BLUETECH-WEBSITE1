@@ -33,7 +33,19 @@
 <!-- PAGE HEADER -->
 <section class="page-header">
     <h1 class="glow-title">Frequently Asked Questions</h1>
-    <p class="header-subtext">Find answers to the most common questions from our clients.</p>
+    <p class="header-subtext">
+        Find quick answers to the most common questions from our clients.
+    </p>
+
+    <!-- WAVE -->
+    <div class="wave-container">
+        <svg class="wave" viewBox="0 0 1440 320">
+            <path fill="#0ab6ff50"
+                d="M0,224L80,213.3C160,203,320,181,480,197.3C640,213,800,267,960,272C1120,277,1280,245,1360,224L1440,203L1440,0L1360,0C1280,
+0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+            </path>
+        </svg>
+    </div>
 </section>
 
 <!-- FAQ SECTION -->
@@ -41,15 +53,15 @@
 
     <div class="faq-container">
 
-        <!-- FAQ BOX -->
+        <!-- FAQ TEMPLATE ITEM -->
         <div class="faq-item">
             <button class="faq-question">❓ How long does it take to finish a website?</button>
             <div class="faq-answer">
                 <p>
-                    Simple websites take 3–5 days.  
-                    Business websites: 7–14 days.  
-                    E-commerce websites: 10–20 days.  
-                    We also offer express delivery when needed.
+                    Simple websites: 3–5 days <br>
+                    Business websites: 7–14 days <br>
+                    E-commerce: 10–20 days <br><br>
+                    We also offer express delivery.
                 </p>
             </div>
         </div>
@@ -58,8 +70,8 @@
             <button class="faq-question">❓ What do you need from me to start a project?</button>
             <div class="faq-answer">
                 <p>
-                    We need your business name, logo (if you have one),  
-                    content/text, images, service list & design preferences.  
+                    We typically need: business name, contact details, logo, content, photos,
+                    service list, design preference & examples you like.  
                     If you don’t have content, we can create it for you.
                 </p>
             </div>
@@ -69,29 +81,28 @@
             <button class="faq-question">❓ Do you offer revisions?</button>
             <div class="faq-answer">
                 <p>
-                    Yes! All plans include revisions.  
-                    Business + Professional plans include **unlimited revisions**  
-                    until you are fully satisfied.
+                    Yes! Every package includes revisions.  
+                    Our Business & Professional Plans include **unlimited revisions**.
                 </p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question">❓ Do you build mobile-friendly websites?</button>
+            <button class="faq-question">❓ Are your websites mobile-friendly?</button>
             <div class="faq-answer">
                 <p>
-                    Absolutely — every website we create is fully responsive and works  
-                    across phones, tablets, and desktop devices.
+                    Absolutely. All our websites are fully responsive and work perfectly
+                    on phones, tablets, and desktop devices.
                 </p>
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question">❓ Can you redesign my old website?</button>
+            <button class="faq-question">❓ Do you redesign old websites?</button>
             <div class="faq-answer">
                 <p>
-                    Yes! We can redesign, optimise and modernise your entire website  
-                    with a clean, professional look.
+                    Yes, we can redesign your entire website with a modern UI/UX,
+                    improved structure and optimized performance.
                 </p>
             </div>
         </div>
@@ -100,8 +111,28 @@
             <button class="faq-question">❓ Do you provide maintenance?</button>
             <div class="faq-answer">
                 <p>
-                    Yes, we offer monthly maintenance packages including updates,  
-                    security checks, backups & content changes.
+                    Yes, we offer monthly maintenance plans that include updates,
+                    security checks, backups & small content changes.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">❓ Can you help with SEO?</button>
+            <div class="faq-answer">
+                <p>
+                    Yes! We offer both basic SEO (included in plans) and advanced SEO
+                    services for ranking and traffic growth.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">❓ Do you offer logo or branding design?</button>
+            <div class="faq-answer">
+                <p>
+                    Yes — we provide logo design, business cards, social media posts,
+                    brand identity kits and full branding packages.
                 </p>
             </div>
         </div>
@@ -112,7 +143,7 @@
 <!-- CTA -->
 <section class="cta">
     <h2>Still Have Questions?</h2>
-    <p>Contact us anytime — we’re happy to help.</p>
+    <p>Contact us anytime — our support team is here to assist you.</p>
     <a href="contact.html" class="btn-primary">Contact Support</a>
 </section>
 
@@ -127,13 +158,20 @@
 </footer>
 
 <script>
-// FAQ ACCORDION JS
+// FAQ ACCORDION WITH SMOOTH ANIMATION
 document.querySelectorAll(".faq-question").forEach(button => {
     button.addEventListener("click", () => {
         const answer = button.nextElementSibling;
+        const isOpen = answer.style.maxHeight;
 
-        button.classList.toggle("active");
-        answer.style.display = answer.style.display === "block" ? "none" : "block";
+        // Close all others
+        document.querySelectorAll(".faq-answer").forEach(a => a.style.maxHeight = null);
+        document.querySelectorAll(".faq-question").forEach(q => q.classList.remove("active"));
+
+        if (!isOpen) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            button.classList.add("active");
+        }
     });
 });
 </script>
